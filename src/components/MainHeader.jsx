@@ -9,6 +9,7 @@ const theme = themes[0]
 
 const PlayerList = styled.div`
   background-color: ${theme.gray};
+  position: relative;
   height: 55px;
   display: flex;
   box-sizing: border-box;
