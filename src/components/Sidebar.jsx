@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled,{ css } from "styled-components";
 import { SaveFilled, CaretUpFilled, CaretDownFilled,DeleteFilled, YoutubeFilled ,FacebookFilled    } from "@ant-design/icons";
+import PostContext from "../store/post";
 
 const SideWrapper = styled.div`
   background: #0f0f0f;
@@ -8,7 +9,7 @@ const SideWrapper = styled.div`
 `;
 
 const Inner = styled.div`
-  width: 400px;
+  width: 420px;
   background-color: #222;
   border-radius: 20px;
   @media screen and (max-width: 960px)  {
@@ -78,7 +79,8 @@ const AuthorInfo = styled.div`
   transform: skew(170deg);
 `;
 
-const Sidebar = ({ windowSize , playList, setPlayList }) => {
+const Sidebar = ({ windowSize }) => {
+  const { playList, setPlayList } = useContext(PostContext);
 
   // const saveList = () => {
   //   window.localStorage.setItem('liston', JSON.stringify(playList));

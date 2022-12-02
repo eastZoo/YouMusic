@@ -1,8 +1,8 @@
 import { YoutubeFilled } from "@ant-design/icons";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactPlayer from "react-player";
 import styled from "styled-components";
-import Slider from "react-slick";
+import PostContext from "../store/post";
 
 const VideoInfo = styled.div`
   display: flex;
@@ -68,9 +68,10 @@ const Main = styled.div`
   }
 `;
 
-const Mainplayer = ({ windowSize, playList }) => {
-  const [repeat, setRepeat] = useState(false);
+const Mainplayer = ({ windowSize }) => {
+  const { playList } = useContext(PostContext);
 
+  const [repeat, setRepeat] = useState(false);
   const [playNumber, setPlayNumber] = useState(0);
   console.log("windowSize.xPlay", windowSize.xPlay);
   return (
