@@ -1,29 +1,30 @@
 import React, { useContext } from "react";
-import styled,{ css } from "styled-components";
+import styled from "styled-components";
 import { SaveFilled, CaretUpFilled, CaretDownFilled,DeleteFilled, YoutubeFilled ,FacebookFilled    } from "@ant-design/icons";
 import PostContext from "../store/post";
+import AddCard from "./AddCard";
 
 const SideWrapper = styled.div`
   background: #0f0f0f;
   max-width: 800px;
 `;
 
-const Inner = styled.div`
+const Mymusic = styled.div`
   width: 420px;
   background-color: #222;
-  border-radius: 20px;
+  border-radius: 15px;
   @media screen and (max-width: 960px)  {
     margin-top: 30px;
     width: 850px;
   }
 `;
 
-const Header = styled.div`
+const Cap = styled.div`
   position: relative;
   height: 100px;
   background-color: #141414;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
   justify-content: center;
   align-items: center;
 `;
@@ -35,6 +36,7 @@ const GridWrapper = styled.div`
 
 const SaveBtn = styled.div`
   text-align: right;
+  cursor: pointer;
 `;
 
 const Title = styled.div`
@@ -82,20 +84,25 @@ const AuthorInfo = styled.div`
 const Sidebar = ({ windowSize }) => {
   const { playList, setPlayList } = useContext(PostContext);
 
+  const saveList = () => {
+    console.log(playList)
+    localStorage.setItem("mylist", JSON.stringify(playList));
+    alert('리스트가 저장됬어요 브라우저창을 닫았다 켜도 저장됩니다.')
+  } 
   // const saveList = () => {
   //   window.localStorage.setItem('liston', JSON.stringify(playList));
   // }
   console.log(windowSize);
   return (
     <SideWrapper >
-      <Inner>
-        <Header>
+      <Mymusic>
+        <Cap>
           <Title>MY MUSIC</Title>
-          <SaveBtn>
+          <SaveBtn onClick={saveList}>
             플레이 리스트 저장하기
             <SaveFilled />
           </SaveBtn>
-        </Header>
+        </Cap>
         <GridWrapper>
           {playList.map(
                 ({ title, author, provider, url, thumbnail }, index) => (
@@ -166,7 +173,8 @@ const Sidebar = ({ windowSize }) => {
                 )
               )}
         </GridWrapper>
-      </Inner>
+      </Mymusic>
+      <AddCard/>
     </SideWrapper>
   );
 };
