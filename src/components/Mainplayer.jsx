@@ -85,7 +85,7 @@ const Mainplayer = ({ windowSize }) => {
             setPlayNumber(0);
           }
         }}
-        playing={false}
+        playing={true}
         controls={true}
         width={windowSize.x <= 960 ? 850 : 1150}
         height={windowSize.yPlay}
