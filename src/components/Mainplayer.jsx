@@ -8,6 +8,23 @@ const VideoInfo = styled.div`
   display: flex;
   background: #0f0f0f;
   height: 150px;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const InfoCard = styled.div`
+  background: #272727;
+  border-radius: 15px;
+  margin: auto;
+  height: 120px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  @media screen and (max-width: 768px)  {
+    width: 420px;
+    margin-left: 0;
+  }
 `;
 
 const Title = styled.div`
@@ -16,21 +33,15 @@ const Title = styled.div`
   padding: 0 20px;
 `;
 
-const InfoCard = styled.div`
-  background: #272727;
-  border-radius: 15px;
-  margin: auto;
-  width: ${(props) => props.width - 80}px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-`;
 
 const PlayerThumbnail = styled.div`
   padding: 10px;
   display: grid;
+  border-radius: 15px;
   background: #272727;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   & div {
     filter: grayscale(1);
@@ -38,7 +49,10 @@ const PlayerThumbnail = styled.div`
   & div:nth-child(${(props) => props.playNumber + 1}) {
     filter: grayscale(0);
   }
-
+  @media screen and (max-width: 768px)  {
+    width: 500px;
+    margin-left: 0;
+  }
 `;
 
 // IMG BUTTON
@@ -47,7 +61,11 @@ const Button = styled.div`
 `;
 
 const Main = styled.div`
-  
+  width: 1150px;
+  @media screen and (max-width: 960px)  {
+    width: 100%;
+    display: block;
+  }
 `;
 
 const Mainplayer = ({ windowSize, playList }) => {
@@ -68,12 +86,12 @@ const Mainplayer = ({ windowSize, playList }) => {
         }}
         playing={true}
         controls={true}
-        width={windowSize.xPlay}
+        width={windowSize.x <= 960 ? 850 : 1150}
         height={windowSize.yPlay}
       ></ReactPlayer>
       {/* 하단 동영상 정보창 */}
-      <VideoInfo width={windowSize.x}>
-        <InfoCard width={windowSize.xPlay}>
+      <VideoInfo >
+        <InfoCard >
           <YoutubeFilled style={{ fontSize: "35px", color: "#f1f1f1" }} />
           <Title>
             <div>{playList[playNumber].title}</div>

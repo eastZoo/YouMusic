@@ -7,22 +7,25 @@ const themes = [
 ]
 const theme = themes[0]
 
-const PlayerList = styled.div`
+const Headers = styled.div`
   background-color: ${theme.gray};
-  position: relative;
+  width: 100%;
   height: 55px;
-  display: flex;
-  box-sizing: border-box;
-  padding: 0 30px
   ;
 `
+const Inner = styled.div`
+  margin: 0 auto;
+  width: 1600px;
+  position: relative;
+`;
 
-const MainHeader = ({ width }) => {
-  console.log(width)
+const MainHeader = () => {
   return (
-    <PlayerList width={width}>
-      <img src="img/youmusic-logo.png" style={{ width: "230px" }} alt="" />
-    </PlayerList>
+    <Headers>
+      <Inner>
+        <img src="img/youmusic-logo.png" style={{ width: "230px" }} alt="" />
+      </Inner>
+    </Headers>
   );
 }
 
