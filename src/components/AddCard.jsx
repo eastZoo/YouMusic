@@ -10,6 +10,10 @@ const Card = styled.div`
   height: 225px;
   background-color: #222;
   border-radius: 15px;
+  @media screen and (max-width: 1536px) {
+    width: 350px;
+    height: 155px;
+  }
 `;
 const Cap = styled.div`
   height: 60px;
@@ -51,17 +55,29 @@ const Button = styled.button`
 
 const AddInfo = styled.div`
   display: flex;
+  margin-top: 5px;
 `;
 
 const AddImg = styled.div`
-  flex: 1;
   padding-left: 20px;
+  @media screen and (max-width: 1536px) {
+    width: 75px;
+  }
+`;
+const Img = styled.img`
+  width: 130px;
+  @media screen and (max-width: 1536px) {
+    width: 68px;
+  }
 `;
 const AddTitle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 10px;
+  @media screen and (max-width: 1536px) {
+    font-size: 13px;
+  }
 `;
 const Add = styled.button`
   width: 350px;
@@ -70,7 +86,7 @@ const Add = styled.button`
   padding: 7px 0;
   border: 1px solid #303030;
   margin: 5px auto;
-  display:block;
+  display: block;
   color: #ffffffe0;
   font-size: 16px;
   cursor: pointer;
@@ -88,7 +104,7 @@ const AddCard = () => {
 
   const changeHandler = (e) => {
     setUrl(e.target.value);
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
 
   const getUrlInfo = async (address) => {
@@ -114,7 +130,7 @@ const AddCard = () => {
   const onClick = (e) => {
     e.preventDefault();
     getUrlInfo(url);
-    console.log(info)
+    console.log(info);
   };
 
   const onPush = () => {
@@ -143,7 +159,7 @@ const AddCard = () => {
       </Cap>
       <AddInfo>
         <AddImg>
-          <img src={info.thumbnail} alt="" style={{ width: "130px" }} />
+          <Img src={info.thumbnail} />
         </AddImg>
         <AddTitle>
           <div>{info.title}</div>

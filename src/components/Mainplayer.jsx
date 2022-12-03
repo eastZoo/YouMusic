@@ -1,5 +1,5 @@
 import { YoutubeFilled } from "@ant-design/icons";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import styled from "styled-components";
 import PostContext from "../store/post";
@@ -10,20 +10,27 @@ const VideoInfo = styled.div`
   height: 150px;
   max-width: 1200px;
   margin: 0 auto;
+  @media screen and (max-width: 1536px) {
+    height: 100px;
+  }
 `;
 
 const InfoCard = styled.div`
   background: #272727;
   border-radius: 15px;
   margin: auto;
-  height: 120px;
+  height: 100px;
   width: 100%;
   display: flex;
   align-items: center;
   padding: 0 40px;
-  @media screen and (max-width: 768px)  {
+  @media screen and (max-width: 768px) {
     width: 420px;
     margin-left: 0;
+  }
+  @media screen and (max-width: 1536px) {
+    margin: 10px auto;
+    height: 80px;
   }
 `;
 
@@ -31,8 +38,10 @@ const Title = styled.div`
   color: #f1f1f1;
   font-size: 20px;
   padding: 0 20px;
+  @media screen and (max-width: 1536px) {
+    font-size: 16px;
+  }
 `;
-
 
 const PlayerThumbnail = styled.div`
   padding: 10px;
@@ -49,9 +58,11 @@ const PlayerThumbnail = styled.div`
   & div:nth-child(${(props) => props.playNumber + 1}) {
     filter: grayscale(0);
   }
-  @media screen and (max-width: 768px)  {
+  @media screen and (max-width: 768px) {
     width: 500px;
     margin-left: 0;
+  }
+  @media screen and (max-width: 1536px) {
   }
 `;
 
@@ -62,18 +73,33 @@ const Button = styled.div`
 
 const Main = styled.div`
   width: 1150px;
-  @media screen and (max-width: 960px)  {
+  @media screen and (max-width: 960px) {
     width: 100%;
     display: block;
+  }
+  @media screen and (max-width: 1536px) {
+    width: 950px;
   }
 `;
 
 const Mainplayer = ({ windowSize }) => {
   const { playList } = useContext(PostContext);
+  const [width, setWidth] = useState(1150);
 
   const [repeat, setRepeat] = useState(false);
   const [playNumber, setPlayNumber] = useState(0);
   console.log("windowSize.xPlay", windowSize.xPlay);
+
+  useEffect(() => {
+    if (windowSize.x <= 1560) {
+      setWidth(950);
+    } else if (windowSize.x <= 960) {
+      setWidth(850);
+    } else {
+      setWidth(1150);
+    }
+  }, [windowSize.x]);
+
   return (
     <Main>
       <ReactPlayer
@@ -87,12 +113,12 @@ const Mainplayer = ({ windowSize }) => {
         }}
         playing={true}
         controls={true}
-        width={windowSize.x <= 960 ? 850 : 1150}
+        width={width}
         height={windowSize.yPlay}
       ></ReactPlayer>
       {/* 하단 동영상 정보창 */}
-      <VideoInfo >
-        <InfoCard >
+      <VideoInfo>
+        <InfoCard>
           <YoutubeFilled style={{ fontSize: "35px", color: "#f1f1f1" }} />
           <Title>
             <div>{playList[playNumber].title}</div>
@@ -109,7 +135,7 @@ const Mainplayer = ({ windowSize }) => {
               title={title}
               onClick={() => setPlayNumber(index)}
               width="auto"
-              height="64px"
+              height={width === 950 ? "50px" : "64px"}
             />
           </Button>
         ))}

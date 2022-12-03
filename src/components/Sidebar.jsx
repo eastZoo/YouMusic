@@ -1,6 +1,13 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { SaveFilled, CaretUpFilled, CaretDownFilled,DeleteFilled, YoutubeFilled ,FacebookFilled    } from "@ant-design/icons";
+import {
+  SaveFilled,
+  CaretUpFilled,
+  CaretDownFilled,
+  DeleteFilled,
+  YoutubeFilled,
+  FacebookFilled,
+} from "@ant-design/icons";
 import PostContext from "../store/post";
 import AddCard from "./AddCard";
 
@@ -13,9 +20,13 @@ const Mymusic = styled.div`
   width: 420px;
   background-color: #222;
   border-radius: 15px;
-  @media screen and (max-width: 960px)  {
+  @media screen and (max-width: 960px) {
     margin-top: 30px;
     width: 850px;
+  }
+  @media screen and (max-width: 1536px) {
+    width: 350px;
+    height: 480px;
   }
 `;
 
@@ -32,6 +43,9 @@ const Cap = styled.div`
 const GridWrapper = styled.div`
   height: 500px;
   overflow: auto;
+  @media screen and (max-width: 1536px) {
+    height: 380px;
+  }
 `;
 
 const SaveBtn = styled.div`
@@ -52,7 +66,7 @@ const EditListOne = styled.div`
   display: grid;
   grid-template-columns: 20px 1fr 3fr 20px;
   gap: 10px;
-  @media screen and (max-width: 960px)  {
+  @media screen and (max-width: 960px) {
     height: 150px;
   }
 `;
@@ -72,6 +86,9 @@ const Flex = styled.div`
   display: flex;
   align-items: center;
   font-size: 15px;
+  @media screen and (max-width: 1536px) {
+    font-size: 12px;
+  }
 `;
 const AuthorInfo = styled.div`
   padding-right: 5px;
@@ -85,19 +102,21 @@ const Sidebar = ({ windowSize }) => {
   const { playList, setPlayList } = useContext(PostContext);
 
   const saveList = () => {
-    console.log(playList)
+    console.log(playList);
     localStorage.setItem("mylist", JSON.stringify(playList));
-    alert('리스트가 저장됬어요 브라우저창을 닫았다 켜도 저장됩니다.')
-  } 
+    alert("리스트가 저장됬어요 브라우저창을 닫았다 켜도 저장됩니다.");
+  };
   // const saveList = () => {
   //   window.localStorage.setItem('liston', JSON.stringify(playList));
   // }
   console.log(windowSize);
   return (
-    <SideWrapper >
+    <SideWrapper>
       <Mymusic>
         <Cap>
-          <Title><img src="/img/mymusic.png" style={{width: "200px"}} /></Title>
+          <Title>
+            <img src="/img/mymusic.png" style={{ width: "200px" }} />
+          </Title>
           <SaveBtn onClick={saveList}>
             플레이 리스트 저장하기
             <SaveFilled />
@@ -105,76 +124,71 @@ const Sidebar = ({ windowSize }) => {
         </Cap>
         <GridWrapper>
           {playList.map(
-                ({ title, author, provider, url, thumbnail }, index) => (
-                  <EditListOne>
-                    {/* 사이드바 리스트 업다운버튼 */}
-                    <FlexColumn>
-                      <Button>
-                        <CaretUpFilled
-                          size="20"
-                          color={index === 0 ? "#555" : ""}
-                          onClick={() => {
-                            if (index !== 0) {
-                              const temp = playList[index - 1];
-                              playList[index - 1] = playList[index];
-                              playList[index] = temp;
-                              setPlayList(playList.slice());
-                            }
-                          }}
-                        />
-                      </Button>
-                      <Button>
-                        <CaretDownFilled
-                          size="20"
-                          color={index === playList.length - 1 ? "#555" : ""}
-                          onClick={() => {
-                            if (index !== playList.length - 1) {
-                              const temp = playList[index + 1];
-                              playList[index + 1] = playList[index];
-                              playList[index] = temp;
-                              setPlayList(playList.slice());
-                            }
-                          }}
-                        />
-                      </Button>
-                    </FlexColumn>
-                    {/* 썸네일 그림 */}
-                    <div>
-                      <img
-                        src={thumbnail}
-                        alt={title}
-                        width="100%"
-                        height="auto"
-                      />
-                    </div>
-                    {/* 타이틀 author */}
-                    <FlexColumn>
-                      <Flex>
-                        {title}
-                      </Flex>
-                      <AuthorInfo>
-                        {provider === "YouTube" ? <YoutubeFilled size="14" /> : null}
-                        &nbsp;{author}
-                      </AuthorInfo>
-                    </FlexColumn>
-                    {/* 삭제버튼 */}
-                    <FlexColumn>
-                      <Button>
-                        <DeleteFilled
-                          size="20"
-                          onClick={() => {
-                            playList.splice(index, 1);
-                            setPlayList(playList.slice());
-                          }}
-                        />
-                      </Button>
-                    </FlexColumn>
-                  </EditListOne>
-                )
-              )}
+            ({ title, author, provider, url, thumbnail }, index) => (
+              <EditListOne>
+                {/* 사이드바 리스트 업다운버튼 */}
+                <FlexColumn>
+                  <Button>
+                    <CaretUpFilled
+                      size="20"
+                      color={index === 0 ? "#555" : ""}
+                      onClick={() => {
+                        if (index !== 0) {
+                          const temp = playList[index - 1];
+                          playList[index - 1] = playList[index];
+                          playList[index] = temp;
+                          setPlayList(playList.slice());
+                        }
+                      }}
+                    />
+                  </Button>
+                  <Button>
+                    <CaretDownFilled
+                      size="20"
+                      color={index === playList.length - 1 ? "#555" : ""}
+                      onClick={() => {
+                        if (index !== playList.length - 1) {
+                          const temp = playList[index + 1];
+                          playList[index + 1] = playList[index];
+                          playList[index] = temp;
+                          setPlayList(playList.slice());
+                        }
+                      }}
+                    />
+                  </Button>
+                </FlexColumn>
+                {/* 썸네일 그림 */}
+                <div>
+                  <img src={thumbnail} alt={title} width="100%" height="auto" />
+                </div>
+                {/* 타이틀 author */}
+                <FlexColumn>
+                  <Flex>{title}</Flex>
+                  <AuthorInfo>
+                    {provider === "YouTube" ? (
+                      <YoutubeFilled size="14" />
+                    ) : null}
+                    &nbsp;{author}
+                  </AuthorInfo>
+                </FlexColumn>
+                {/* 삭제버튼 */}
+                <FlexColumn>
+                  <Button>
+                    <DeleteFilled
+                      size="20"
+                      onClick={() => {
+                        playList.splice(index, 1);
+                        setPlayList(playList.slice());
+                      }}
+                    />
+                  </Button>
+                </FlexColumn>
+              </EditListOne>
+            )
+          )}
         </GridWrapper>
       </Mymusic>
-      <AddCard/>
+      <AddCard />
     </SideWrapper>
   );
 };
