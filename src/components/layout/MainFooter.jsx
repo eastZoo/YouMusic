@@ -8,10 +8,10 @@ const Copy = styled.div`
   width: 1600px;
   margin: 0 auto;
   text-align: right;
-  @media screen and (max-width: 960px) {
+  @media all and (max-width: 960px) {
     width: 960px;
   }
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     width: 1330px;
   }
 `;

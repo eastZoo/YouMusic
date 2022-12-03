@@ -10,7 +10,7 @@ const VideoInfo = styled.div`
   height: 150px;
   max-width: 1200px;
   margin: 0 auto;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     height: 100px;
   }
 `;
@@ -24,13 +24,13 @@ const InfoCard = styled.div`
   display: flex;
   align-items: center;
   padding: 0 40px;
-  @media screen and (max-width: 768px) {
-    width: 420px;
-    margin-left: 0;
-  }
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     margin: 10px auto;
     height: 80px;
+  }
+  @media all and (max-width: 768px) {
+    width: 420px;
+    margin-left: 0;
   }
 `;
 
@@ -38,7 +38,7 @@ const Title = styled.div`
   color: #f1f1f1;
   font-size: 20px;
   padding: 0 20px;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     font-size: 16px;
   }
 `;
@@ -58,11 +58,11 @@ const PlayerThumbnail = styled.div`
   & div:nth-child(${(props) => props.playNumber + 1}) {
     filter: grayscale(0);
   }
-  @media screen and (max-width: 768px) {
+  @media all and (max-width: 1536px) {
+  }
+  @media all and (max-width: 768px) {
     width: 500px;
     margin-left: 0;
-  }
-  @media screen and (max-width: 1536px) {
   }
 `;
 
@@ -73,13 +73,14 @@ const Button = styled.div`
 
 const Main = styled.div`
   width: 1150px;
-  @media screen and (max-width: 960px) {
+  @media all and (max-width: 1536px) {
+    width: 950px;
+  }
+  @media all and (max-width: 960px) {
     width: 100%;
     display: block;
   }
-  @media screen and (max-width: 1536px) {
-    width: 950px;
-  }
+  
 `;
 
 const Mainplayer = ({ windowSize }) => {
@@ -91,10 +92,10 @@ const Mainplayer = ({ windowSize }) => {
   console.log("windowSize.xPlay", windowSize.xPlay);
 
   useEffect(() => {
-    if (windowSize.x <= 1560) {
+    if (windowSize.x <= 960) {
+      setWidth(840);
+    } else if (windowSize.x <= 1560) {
       setWidth(950);
-    } else if (windowSize.x <= 960) {
-      setWidth(850);
     } else {
       setWidth(1150);
     }

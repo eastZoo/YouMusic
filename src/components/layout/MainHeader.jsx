@@ -9,7 +9,7 @@ const Headers = styled.div`
   background-color: ${theme.gray};
   width: 100%;
   height: 55px;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     height: 45px;
   }
 `;
@@ -17,13 +17,13 @@ const Inner = styled.div`
   margin: 0 auto;
   width: 1600px;
   position: relative;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     width: 1330px;
   }
 `;
 const Img = styled.img`
-  width: "230px";
-  @media screen and (max-width: 1536px) {
+  width: 230px;
+  @media all and (max-width: 1536px) {
     height: 45px;
   }
 `;

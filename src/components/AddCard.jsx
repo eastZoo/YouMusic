@@ -10,7 +10,7 @@ const Card = styled.div`
   height: 225px;
   background-color: #222;
   border-radius: 15px;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     width: 350px;
     height: 155px;
   }
@@ -60,13 +60,13 @@ const AddInfo = styled.div`
 
 const AddImg = styled.div`
   padding-left: 20px;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     width: 75px;
   }
 `;
 const Img = styled.img`
   width: 130px;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     width: 68px;
   }
 `;
@@ -75,7 +75,7 @@ const AddTitle = styled.div`
   flex-direction: column;
   justify-content: center;
   padding-left: 10px;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     font-size: 13px;
   }
 `;

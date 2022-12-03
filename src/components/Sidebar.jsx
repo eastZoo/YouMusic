@@ -20,14 +20,15 @@ const Mymusic = styled.div`
   width: 420px;
   background-color: #222;
   border-radius: 15px;
-  @media screen and (max-width: 960px) {
-    margin-top: 30px;
-    width: 850px;
-  }
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     width: 350px;
     height: 480px;
   }
+  @media all and (max-width: 960px) {
+    margin-top: 30px;
+    width: 850px;
+  }
+  
 `;
 
 const Cap = styled.div`
@@ -43,8 +44,11 @@ const Cap = styled.div`
 const GridWrapper = styled.div`
   height: 500px;
   overflow: auto;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     height: 380px;
+  }
+  @media all and (max-width: 960px) {
+    height: 375px;
   }
 `;
 
@@ -66,7 +70,7 @@ const EditListOne = styled.div`
   display: grid;
   grid-template-columns: 20px 1fr 3fr 20px;
   gap: 10px;
-  @media screen and (max-width: 960px) {
+  @media all and (max-width: 960px) {
     height: 150px;
   }
 `;
@@ -86,8 +90,11 @@ const Flex = styled.div`
   display: flex;
   align-items: center;
   font-size: 15px;
-  @media screen and (max-width: 1536px) {
+  @media all and (max-width: 1536px) {
     font-size: 12px;
+  }
+  @media all and (max-width:  960px) {
+    font-size: 15px;
   }
 `;
 const AuthorInfo = styled.div`
