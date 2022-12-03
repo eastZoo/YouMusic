@@ -42,7 +42,7 @@ const SaveBtn = styled.div`
 const Title = styled.div`
   font-size: 35px;
   text-align: center;
-  padding: 24px;
+  padding: 18px 18px 10px 18px;
 `;
 
 const EditListOne = styled.div`
@@ -97,7 +97,7 @@ const Sidebar = ({ windowSize }) => {
     <SideWrapper >
       <Mymusic>
         <Cap>
-          <Title>MY MUSIC</Title>
+          <Title><img src="/img/mymusic.png" style={{width: "200px"}} /></Title>
           <SaveBtn onClick={saveList}>
             플레이 리스트 저장하기
             <SaveFilled />
