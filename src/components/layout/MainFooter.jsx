@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const Footer = styled.div`
   margin-top: 15px;
+  @media all and (max-width: 1536px) {
+    margin-top: 0;
+  }
 `;
 const Copy = styled.div`
   width: 1600px;
