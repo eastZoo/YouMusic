@@ -51,7 +51,7 @@ const PlayerThumbnail = styled.div`
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
   & div {
     filter: grayscale(1);
   }
