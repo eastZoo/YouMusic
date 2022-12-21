@@ -10,7 +10,7 @@ const Headers = styled.div`
   width: 100%;
   height: 55px;
   @media all and (max-width: 1536px) {
-    height: 45px;
+    height: 55px;
   }
 `;
 const Inner = styled.div`
@@ -24,7 +24,7 @@ const Inner = styled.div`
 const Img = styled.img`
   width: 230px;
   @media all and (max-width: 1536px) {
-    height: 45px;
+    height: 55px;
   }
 `;
 
